@@ -60,3 +60,63 @@ function reverseInputPhrase(inputPhrase) {
     inputPhrase.value = '';
     reversedPhrase = '';
 }
+
+
+// NUMBER GAME EXERCISE 
+
+// Pari e Dispari
+//
+// L’utente sceglie pari o dispari e inserisce un numero da 1 a 5.
+// Generiamo un numero random (sempre da 1 a 5) per il computer (usando
+// una funzione).
+// Sommiamo i due numeri
+// Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione)
+// Dichiariamo chi ha vinto.
+
+let oddOrEven = '';
+
+let userNumber;
+
+let computerNumber;
+
+oddOrEvenAsk();
+
+chooseUserNumber();
+
+
+// NUMBER GAME FUNCTIONS
+
+// asks user to select odd or even
+function oddOrEvenAsk() {
+
+    oddOrEven = prompt('Choose and type \'odd\' or \'even\'');
+
+    if (oddOrEven !== 'odd' && oddOrEven !== 'even') {
+        alert('Please type \'odd\' or \'even\'!');
+        oddOrEvenAsk();
+    } else {
+        console.log('You choose ' + oddOrEven);
+    }
+}
+
+function chooseUserNumber() {
+
+    userNumber = parseInt(prompt('Pick a number between 1 and 5')).toFixed(0);
+
+    if (0 < userNumber && userNumber < 6) {
+        console.log('You picked the number ' + userNumber);
+    } else {
+        alert('Please pick a number between 1 and 5!');
+        chooseNumber();
+    }
+}
+
+function chooseComputerNumber() {
+
+    alert('Cool, now i will pick a random number between 1 and 5 for me!');
+
+    computerNumber = Math.floor(Math.random() * 5) + 1;
+
+    console.log('The computer picked the number ' + computerNumber);
+
+}
