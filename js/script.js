@@ -75,20 +75,25 @@ function reverseInputPhrase(inputPhrase) {
 
 let oddOrEven = '';
 
-let userNumber;
+let userNumber = 0;
 
-let computerNumber;
+let computerNumber = 0;
 
 oddOrEvenAsk();
 
 chooseUserNumber();
+
+chooseComputerNumber();
+
+let numbersSum = parseInt(userNumber) + parseInt(computerNumber);
+
+checkNumbersSumOddOrEven();
 
 
 // NUMBER GAME FUNCTIONS
 
 // asks user to select odd or even
 function oddOrEvenAsk() {
-
     oddOrEven = prompt('Choose and type \'odd\' or \'even\'');
 
     if (oddOrEven !== 'odd' && oddOrEven !== 'even') {
@@ -100,7 +105,6 @@ function oddOrEvenAsk() {
 }
 
 function chooseUserNumber() {
-
     userNumber = parseInt(prompt('Pick a number between 1 and 5')).toFixed(0);
 
     if (0 < userNumber && userNumber < 6) {
@@ -112,11 +116,26 @@ function chooseUserNumber() {
 }
 
 function chooseComputerNumber() {
-
     alert('Cool, now i will pick a random number between 1 and 5 for me!');
 
     computerNumber = Math.floor(Math.random() * 5) + 1;
 
     console.log('The computer picked the number ' + computerNumber);
 
+    alert('I randomly picked the number ' + computerNumber);
+}
+
+function checkNumbersSumOddOrEven() {
+
+    if (numbersSum % 2 === 0 && oddOrEven === 'even') {
+        alert('YOU WON! ' + userNumber + ' + ' + computerNumber + ' = ' + numbersSum + ' which is an even number!');
+    } else if (numbersSum % 2 === 0 && oddOrEven === 'odd') {
+        alert('YOU LOST! ' + userNumber + ' + ' + computerNumber + ' = ' + numbersSum + ' which is NOT an odd number!');
+    }
+
+    if (numbersSum % 2 !== 0 && oddOrEven === 'odd') {
+        alert('YOU WON! ' + userNumber + ' + ' + computerNumber + ' = ' + numbersSum + ' which is an odd number!');
+    } else if (numbersSum % 2 !== 0 && oddOrEven === 'even') {
+        alert('YOU LOST! ' + userNumber + ' + ' + computerNumber + ' = ' + numbersSum + ' which is NOT an even number!');
+    }
 }
