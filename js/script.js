@@ -20,27 +20,26 @@ console.log('JS OK!');
 
 // PALINDROME EXERCISE (tells if an inserted phrase is palindrome or not)
 
-let inputPhrase = prompt('Insert a phrase!');
-inputPhrase = inputPhrase.replace(/\s+/g, '').trim(); // removes space at start, at end and in between letters
+let inputPhrase = document.getElementById('palindrome-text-area');
+
+let palindromeCheckButton = document.getElementById('palindrome-check-button');
 
 let reversedPhrase = "";
 
-console.log('The typed phrase is: ' + inputPhrase);
-
-reverseInputPhrase(inputPhrase);
-
-if (inputPhrase === reversedPhrase) {
-    console.log('The phrase IS palindrome!')
-    alert('The phrase IS palindrome!');
-} else {
-    console.log('The phrase IS NOT palindrome!')
-    alert('The phrase IS NOT palindrome!');
-}
+palindromeCheckButton.addEventListener('click',
+    function () {
+        reverseInputPhrase(inputPhrase.value);
+    }
+)
 
 
 // PALINDROME FUNCTION
 
 function reverseInputPhrase(inputPhrase) {
+
+    inputPhrase = inputPhrase.replace(/\s+/g, '').trim(); // removes space at start, at end and in between letters
+
+    console.log('The typed phrase is: ' + inputPhrase);
 
     for (let i = inputPhrase.length - 1; i >= 0; i--) {
         reversedPhrase += inputPhrase[i];
@@ -48,5 +47,16 @@ function reverseInputPhrase(inputPhrase) {
 
     console.log('The reverted phrase is: ' + reversedPhrase);
 
-    return reversedPhrase;
+    if (inputPhrase === reversedPhrase) {
+        console.log('The phrase IS palindrome!')
+        console.log('');
+        alert('The phrase IS palindrome!');
+    } else {
+        console.log('The phrase IS NOT palindrome!')
+        console.log('');
+        alert('The phrase IS NOT palindrome!');
+    }
+
+    inputPhrase.value = '';
+    reversedPhrase = '';
 }
